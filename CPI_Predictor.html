@@ -10,10 +10,12 @@
 
     <body>
         <script src="CPI_Predictor.js"></script>
-    
+        <p class="terms">Predicted CPI will have error of ~ <+/- 0.01> using CPI.</p>
+        <p class="terms">For errorless results use Gradepoints</p>
         <h1 id="heading">CPI Predictor</h1>
         <section id="cpi_credits">
             <div id="cpi_div"><label id="for_cpi" for ="cpi">Current CPI : <input id="cpi" type="number"></label></div>
+            <div id="earned_gp_div"><label id="for_earned_gp" for ="earned_gp">Earned Gradepoints : <input id="earned_gp" type="number"></label></div>
             <div id="credits_div"><label id="for_tcredits" for = "total-credits"> Total Credits Earned Till Now : <input type="number" id="total-credits"></label></div>
         </section>
         <section id="courses">
@@ -48,7 +50,8 @@
             <button id="add-course"><span id="plus">+</span>Add Course</button>
             <button id="remove-course"><span id="minus">-</span>Remove Course</button>
 
-            <button id="calculate">Calculate</button>
+            <button class="calculate" id="calculate_cpi">Calculate using CPI</button>
+            <button class="calculate" id="calculate_gp">Calculate usign Gradepoints</button>
         </section>
         <div>
         <h1 class="answer" id="ans_header"></h1>
