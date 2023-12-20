@@ -58,15 +58,20 @@ document.addEventListener("DOMContentLoaded", function () {
             let earned_gradepoints = 0;
             let this_sem_credits = 0;
             for (let i = 0; i <= no_of_courses - 1; i++) {
-                credits = parseFloat(credits) + parseFloat(new_credits[i].value);
-
+                this_sem_credits = parseFloat(this_sem_credits) + parseFloat(new_credits[i].value);
+                console.log(this_sem_credits);
+                
                 earned_gradepoints = parseFloat(earned_gradepoints) + (parseFloat(new_credits[i].value) * parseFloat(expected_ptrs[i].value));
 
             }
+            credits = this_sem_credits + credits;
             let total_gradepoints = parseInt(earned_gradepoints) + parseInt(prev_gradepts);
             let new_cpi = ((total_gradepoints) / parseFloat(credits));
 
-            document.querySelector("#ans_header").innerHTML ="Your CPI after this Semeseter : " + new_cpi.toFixed(2);
+            let spi = ((earned_gradepoints)/parseFloat(this_sem_credits));
+            console.log(spi);
+
+            document.querySelector("#ans_header").innerHTML ="Your CPI after this Semeseter : " + new_cpi.toFixed(2) + "/nSPI : " + spi.toFixed(2);
             document.getElementById("ans_header").style.display="block";
         }
     }
