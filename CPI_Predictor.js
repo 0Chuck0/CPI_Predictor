@@ -2,22 +2,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("add-course").addEventListener("click", addCourse);
     document.getElementById("remove-course").addEventListener("click", removeCourse);
-    document.getElementById("calculate_cpi").addEventListener("click", calculateCPI);
-    document.getElementById("calculate_gp").addEventListener("click", calculateCPI_gp);
+    document.getElementById("calculate_cpi").addEventListener("click", cpiOrGp);
+    // document.getElementById("calculate_gp").addEventListener("click", calculateCPI_gp);
 
-    let no_of_courses = 5;
+    let no_of_courses = 3;
     function validateFields()
     {
+        let valid_cpi = false;
+        let valid_gp = false;
+
         let cpi_vf = document.getElementById("cpi").value;
-        if(cpi_vf == "" || cpi_vf > 10 || cpi_vf < 0)
+        if(cpi_vf == "" || cpi_vf > 10 || cpi_vf < 0)   valid_cpi = false;
+        else    valid_cpi = true;
+
+        let earned_gp_vf = document.getElementById("earned_gp").value;
+        if(earned_gp_vf == "" || earned_gp_vf < 0) valid_gp = false;
+        else valid_gp = true;
+
+        if(valid_cpi == false && valid_gp == false)
         {
-            alert("Please Enter Valid CPI");
-            return false;
+            alert("Please enter any of the one CPI or Gradepoints Correctly");
+            return 0;
         }
 
         let total_credits = document.getElementById("total-credits").value;
 
-        if(total_credits =="" || total_credits < 0 )
+        if(total_credits == "" || total_credits < 0 )
         {
             alert("Please Enter Valid Total Credtis");
         }
@@ -27,10 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let credits_class = document.getElementsByClassName("credits");
         for(let element of credits_class)
         {
-            if(element.value == "" || element.value <2 || element.value > 5)
+            if(element.value == "" || element.value <1 || element.value > 6)
             {
                 alert("Please Enter Valid Credits");
-                return false;
+                return 0;
             }
         }
 
@@ -39,15 +49,24 @@ document.addEventListener("DOMContentLoaded", function () {
             if(element.value == "" || element.value < 0 || element.value > 10)
             {
                 alert("Please Enter Valid Expected Pointers");
-                return false;
+                return 0;
             }
         }
 
-        return true;
+        if(valid_gp == true)   return 2;
+        return 1;
+    }
+    function cpiOrGp()
+    {
+        let flag = validateFields();
+        if(flag == 2)
+            calculateCPI_gp();
+        else if(flag == 1)
+            calculateCPI();
     }
     function calculateCPI() {
 
-        if (validateFields()) {
+            console.log("Calculating by CPI")
             let curr_cpi = document.getElementById("cpi").value;
             let credits = document.getElementById("total-credits").value;
 
@@ -78,58 +97,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.querySelector("#ans_header").innerHTML ="CPI : " + new_cpi.toFixed(4) +"<br>" +"SPI : " + spi.toFixed(4);
             document.getElementById("ans_header").style.display="block";
-        }
     }
 
-    function validateFields_gp()
-    {
-        // let cpi_vf = document.getElementById("cpi").value;
-        // if(cpi_vf == "" || cpi_vf > 10 || cpi_vf < 0)
-        // {
-        //     alert("Please Enter Valid CPI");
-        //     return false;
-        // }
+    // function validateFields_gp()
+    // {
+    //     // let cpi_vf = document.getElementById("cpi").value;
+    //     // if(cpi_vf == "" || cpi_vf > 10 || cpi_vf < 0)
+    //     // {
+    //     //     alert("Please Enter Valid CPI");
+    //     //     return false;
+    //     // }
 
-        let earned_gp_vf = document.getElementById("earned_gp").value;
-        if(earned_gp_vf == "" || earned_gp_vf < 0)
-        {
-            alert("Please Enter Valid Earned Gradepoints");
-            return false;
-        }
-        let total_credits = document.getElementById("total-credits").value;
+    //     let earned_gp_vf = document.getElementById("earned_gp").value;
+    //     if(earned_gp_vf == "" || earned_gp_vf < 0)
+    //     {
+    //         alert("Please Enter Valid Earned Gradepoints");
+    //         return false;
+    //     }
+    //     let total_credits = document.getElementById("total-credits").value;
 
-        if(total_credits =="" || total_credits < 0 )
-        {
-            alert("Please Enter Valid Total Credtis");
-        }
+    //     if(total_credits =="" || total_credits < 0 )
+    //     {
+    //         alert("Please Enter Valid Total Credtis");
+    //     }
 
-        let ptrs_class = document.getElementsByClassName("ptrs");
+    //     let ptrs_class = document.getElementsByClassName("ptrs");
         
-        let credits_class = document.getElementsByClassName("credits");
-        for(let element of credits_class)
-        {
-            if(element.value == "" || element.value <2 || element.value > 5)
-            {
-                alert("Please Enter Valid Credits");
-                return false;
-            }
-        }
+    //     let credits_class = document.getElementsByClassName("credits");
+    //     for(let element of credits_class)
+    //     {
+    //         if(element.value == "" || element.value <2 || element.value > 5)
+    //         {
+    //             alert("Please Enter Valid Credits");
+    //             return false;
+    //         }
+    //     }
 
-        for(let element of ptrs_class)
-        {
-            if(element.value == "" || element.value < 0 || element.value > 10)
-            {
-                alert("Please Enter Valid Expected Pointers");
-                return false;
-            }
-        }
+    //     for(let element of ptrs_class)
+    //     {
+    //         if(element.value == "" || element.value < 0 || element.value > 10)
+    //         {
+    //             alert("Please Enter Valid Expected Pointers");
+    //             return false;
+    //         }
+    //     }
 
-        return true;
-    }
+    //     return true;
+    // }
 
     function calculateCPI_gp() {
 
-        if (validateFields_gp()) {
+        console.log("Calculating by Grade Points")
             //let curr_cpi = document.getElementById("cpi").value;
             let prev_gradepts = document.getElementById("earned_gp").value;
             let credits = document.getElementById("total-credits").value;
@@ -158,8 +176,11 @@ document.addEventListener("DOMContentLoaded", function () {
             let spi = ((earned_gradepoints)/parseFloat(this_sem_credits));
 
             document.querySelector("#ans_header").innerHTML ="CPI : " + new_cpi.toFixed(4) +"<br>" +"SPI : " + spi.toFixed(4);
-            document.getElementById("ans_header").style.display="block";
-        }
+            var ans_h = document.getElementById("ans_header");
+            ans_h.style.display="block";
+            setTimeout(()=>
+                ans_h.classList.add("show")
+            ,10);
     }
 
     function addCourse() {
@@ -191,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function removeCourse() {
 
-        if (no_of_courses > 5) {
+        if (no_of_courses > 3 ) {
             no_of_courses--;
             let grid = document.getElementsByClassName("css-grid");
             grid[0].lastChild.remove();

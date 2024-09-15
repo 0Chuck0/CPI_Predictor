@@ -1,62 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CPI Predictor</title>
-        <link rel="stylesheet" href="CPI_Predictor.css" />
-    </head>
 
-    <body>
-        <script src="CPI_Predictor.js"></script>
-        <p class="terms">Predicted CPI will have error of ~ <+/- 0.01> using CPI.</p>
-        <p class="terms">For errorless results use Gradepoints</p>
-        <h1 id="heading">CPI Predictor</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CPI Predictor</title>
+    <link rel="stylesheet" href="CPI_Predictor.css" />
+</head>
+
+<body>
+    <script src="CPI_Predictor.js"></script>
+    <p class="terms">Refer to this <a id="doc_ref" href="/CPI_Predictor_Doc.pdf">document📄</a> for better use of the tool. </p>
+
+    <div id="main-container">
+        <h1 id="heading">CPI PREDICTOR</h1>
         <section id="cpi_credits">
-            <div id="cpi_div"><label id="for_cpi" for ="cpi">Current CPI : <input id="cpi" type="number"></label></div>
-            <div id="earned_gp_div"><label id="for_earned_gp" for ="earned_gp">Earned Gradepoints : <input id="earned_gp" type="number"></label></div>
-            <div id="credits_div"><label id="for_tcredits" for = "total-credits"> Total Credits Earned Till Now : <input type="number" id="total-credits"></label></div>
+            <div id="cpi_div"><label id="for_cpi" for="cpi">Current CPI : <input id="cpi" type="number"></label></div>
+            <div id="earned_gp_div"><label id="for_earned_gp" for="earned_gp">Earned Gradepoints : <input id="earned_gp"
+                        type="number"></label></div>
+            <div id="credits_div"><label id="for_tcredits" for="total-credits"> Total Credits Earned Till Now : <input
+                        type="number" id="total-credits"></label></div>
         </section>
         <section id="courses">
-            <h2>Courses</h2>
+            <h2>COURSES</h2>
             <section class="css-grid" id="css-grid">
 
-                    <h3>Course No</h3>
-                    <h3>Credits</h3>
-                    <h3>Predicted Pointers</h3>
-              
-                    <label for = "credits1">Course1</label>
-                    <input type="number" id="credits1" class="credits" required>
-                    <input type="number" id="ptrs1" class="ptrs" required>
-                    
-                    <label for = "credits2">Course2</label>
-                    <input type="number" id="credits2" class="credits" required>
-                    <input type="number" id="ptrs2" class="ptrs" required>
+                <h3>Course No</h3>
+                <h3>Credits</h3>
+                <h3>Predicted Pointers</h3>
 
-                    <label for = "credits3">Course3</label>
-                    <input type="number" id="credits3" class="credits" required>
-                    <input type="number" id="ptrs3" class="ptrs" required>
+                <label for="credits1">Course1</label>
+                <input type="number" id="credits1" class="credits" required>
+                <input type="number" id="ptrs1" class="ptrs" required>
 
-                    <label for = "credits4">Course4</label>
-                    <input type="number" id="credits4" class="credits" required>
-                    <input type="number" id="ptrs4" class="ptrs" required>
-                    
-                    <label for = "credits5">Course5</label>
-                    <input type="number" id="credits5" class="credits" required>
-                    <input type="number" id="ptrs5" class="ptrs" required>
-                    
+                <label for="credits2">Course2</label>
+                <input type="number" id="credits2" class="credits" required>
+                <input type="number" id="ptrs2" class="ptrs" required>
+
+                <label for="credits3">Course3</label>
+                <input type="number" id="credits3" class="credits" required>
+                <input type="number" id="ptrs3" class="ptrs" required>
+
             </section>
-            <button id="add-course"><span id="plus">+</span>Add Course</button>
-            <button id="remove-course"><span id="minus">-</span>Remove Course</button>
+    </div>
+    <section id="buttons">
+        <table id="btn_table">
+            <tr>
+                <th><button id="add-course">Add Course</button></th>
+                <th><button id="remove-course">Remove Course</button></th>
+            </tr>
 
-            <button class="calculate" id="calculate_cpi">Calculate using CPI</button>
-            <button class="calculate" id="calculate_gp">Calculate usign Gradepoints</button>
-        </section>
-        <div>
+            <tr>
+                <th colspan="2"><button class="calculate" id="calculate_cpi">CALCULATE</button></th>
+            </tr>
+    </table>
+        <!-- <button class="calculate" id="calculate_gp">Calculate usign Gradepoints</button> -->
+    </section>
+    </section>
+    <div>
         <h1 class="answer" id="ans_header"></h1>
     </div>
-    </body>
-   
+</body>
+<footer>
+    Made with ❤️ by <a id="github_link" title="Github Link" target="_blank" href="www.github.com/0chuck0">Saumya
+        Shah</a>
+</footer>
 
 </html>
