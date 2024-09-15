@@ -97,6 +97,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.querySelector("#ans_header").innerHTML ="CPI : " + new_cpi.toFixed(4) +"<br>" +"SPI : " + spi.toFixed(4);
             document.getElementById("ans_header").style.display="block";
+            let ans_h = document.getElementById("ans_header");
+            ans_h.style.display="block";
+            setTimeout(()=>
+                ans_h.classList.add("show")
+            ,10);
     }
 
     // function validateFields_gp()
@@ -176,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let spi = ((earned_gradepoints)/parseFloat(this_sem_credits));
 
             document.querySelector("#ans_header").innerHTML ="CPI : " + new_cpi.toFixed(4) +"<br>" +"SPI : " + spi.toFixed(4);
-            var ans_h = document.getElementById("ans_header");
+            let ans_h = document.getElementById("ans_header");
             ans_h.style.display="block";
             setTimeout(()=>
                 ans_h.classList.add("show")

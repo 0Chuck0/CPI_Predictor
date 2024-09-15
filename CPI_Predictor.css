@@ -169,7 +169,6 @@ h3{
 
 }
 
-
 footer{
     margin-top: 2rem;
     border-top: 2px solid rgb(23, 0, 63);
@@ -181,10 +180,40 @@ footer{
 }
 /*responsive*/
 
-@media (width<500px) {
+@media (width<510px) {
 
     body{
-        width:90%;
+        width:80%;
+        font-size: 15px;
     }
-    
+
+    #add-course,#remove-course{
+        width: 5rem;
+        padding: 5px;
+        border-radius: 3px;
+        border: none;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+    #calculate_cpi{
+        margin-top: 1rem;
+        padding: 8px;
+        font-size:18px;
+        height: max-content;
+        width: max-content;
+    }
+    #heading{
+        font-size: 20px;
+    }
+    h2{
+        font-size:18px;
+    }
+    h3{
+        font-size: 16px;
+    }
+
+    #credits_div,#cpi_div,#earned_gp_div{
+        font-size: medium;
+    }
 }
