@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
             grid[0].lastChild.remove();
         }
         else {
-            alert("You have to be enrolled in minimum 5 courses");
+            alert("You have to be enrolled in minimum 3 courses");
         }
 
     }
